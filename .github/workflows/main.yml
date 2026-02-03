@@ -4,10 +4,10 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v4  # v3 -> v4 yaptık
+    - uses: actions/checkout@v4
     
     - name: Python Kur
-      uses: actions/setup-python@v5  # v4 -> v5 yaptık
+      uses: actions/setup-python@v5
       with:
         python-version: '3.9'
         
@@ -18,10 +18,10 @@ jobs:
         
     - name: EXE Oluştur
       run: |
-        pyinstaller --onefile --noconsole --name "CatiaVersiyonBulucu" catia_bulucu.py
+        pyinstaller --onefile --noconsole catia_bulucu.py
         
     - name: Dosyayı Paylaş
-      uses: actions/upload-artifact@v4  # v3 -> v4 yaptık (Hatanın asıl çözümü burası)
+      uses: actions/upload-artifact@v4
       with:
         name: CatiaProgrami
-        path: dist/CatiaVersiyonBulucu.exe
+        path: dist/*.exe
