@@ -1,0 +1,22 @@
+name: EXE Oluşturucu
+on: [push]
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Python Kur
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    - name: Gereçleri Yükle
+      run: |
+        pip install pyinstaller windnd
+    - name: EXE Yap
+      run: |
+        pyinstaller --onefile --noconsole --name "CatiaBulucu" catia_bulucu.py
+    - name: Dosyayı Paylaş
+      uses: actions/upload-artifact@v3
+      with:
+        name: CatiaProgrami
+        path: dist/CatiaBulucu.exe
